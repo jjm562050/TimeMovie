@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "LaunchViewController.h"
+#import "FirstLaunchViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +19,60 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+#pragma mark - 设置状态栏的颜色
+    UIApplication *app = [UIApplication sharedApplication];
+    //设置状态栏的颜色
+    [app setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    //创建窗口 显示启动页面
+
+    self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    [self.window makeKeyAndVisible];
+
+    //self.window.rootViewController = [[LaunchViewController alloc]init];
+   
+    /*
+     // 判断是否是第一次运行
+     // 储存一些用户配置
+     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+     // 通过一个key 来获取一个值 如果没有找到此值 则返回NO
+     BOOL first = [userDefaults boolForKey:@"first"];
+     if (!first)
+     {
+     // 第一次运行程序
+     self.window.rootViewController = [[FirstViewController alloc] init];
+     }
+     else
+     {
+     self.window.rootViewController = [[LaunchViewController alloc] init];
+     }
+     
+     
+     // 第一次运行完成后 执行以下代码
+     [userDefaults setBool:@YES forKey:@"first"];
+     */
+    
+    //判断是否是第一次运行
+    //存储一些用户配置
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    //通过一个key 来获取一个值 如果没有找到此值 则返回NO
+    BOOL first =[userDefaults boolForKey:@"first"];
+    
+    if(!first)
+    {
+        //第一次运行
+        self.window.rootViewController = [[FirstLaunchViewController alloc]init];
+    }
+    else
+    {
+        self.window.rootViewController = [[LaunchViewController alloc]init];
+    }
+    
     return YES;
 }
 

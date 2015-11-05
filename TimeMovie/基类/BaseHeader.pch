@@ -1,0 +1,29 @@
+//
+//  BaseHeader.pch
+//  TimeMovie
+//
+//  Created by MAC22 on 15/8/21.
+//  Copyright (c) 2015年 huiwenjiaoyu. All rights reserved.
+//
+
+#ifndef TimeMovie_BaseHeader_pch
+#define TimeMovie_BaseHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+
+//屏幕的宽 高
+#define kScreenWidth [UIScreen mainScreen].bounds.size.width
+#define kScreenHeight [UIScreen mainScreen].bounds.size.height
+
+// SDWebImage
+#import "UIImageView+WebCache.h"
+
+#import "UIViewExt.h"
+
+//读取json数据
+#import "BaseJSON.h"
+
+#endif
